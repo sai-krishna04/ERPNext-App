@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "format:LOG-{####}",
+ "creation": "2026-08-13 16:30:45.852825",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_invoice",
+  "bank_acc",
+  "amount",
+  "unique_id",
+  "entered_otp",
+  "error_time",
+  "error_msg",
+  "acc_phone",
+  "otp_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "unique_id",
+   "fieldtype": "Data",
+   "label": "Transaction Unique ID"
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Invoice"
+  },
+  {
+   "fieldname": "bank_acc",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "entered_otp",
+   "fieldtype": "Data",
+   "label": "Entered OTP"
+  },
+  {
+   "fieldname": "error_time",
+   "fieldtype": "Datetime",
+   "label": "Error Occured on"
+  },
+  {
+   "fieldname": "error_msg",
+   "fieldtype": "Small Text",
+   "label": "Error Message"
+  },
+  {
+   "fieldname": "acc_phone",
+   "fieldtype": "Phone",
+   "label": "Account Phone"
+  },
+  {
+   "fieldname": "otp_status",
+   "fieldtype": "Data",
+   "label": "OTP Status"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-13 17:14:11.403995",
+ "modified_by": "Administrator",
+ "module": "Erpnext App",
+ "name": "Error Logs",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

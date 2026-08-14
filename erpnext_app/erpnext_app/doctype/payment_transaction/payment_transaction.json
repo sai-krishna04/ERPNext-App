@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-08-13 17:31:39.673254",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payement_transaction_section",
+  "bnk_acc",
+  "reciever_acc",
+  "pay_time",
+  "amount",
+  "pay_status",
+  "unique_id",
+  "pay_type",
+  "acc_phone",
+  "otp_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "payement_transaction_section",
+   "fieldtype": "Section Break",
+   "label": "Payement Transaction"
+  },
+  {
+   "fieldname": "pay_time",
+   "fieldtype": "Datetime",
+   "label": "Payment Time"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "pay_status",
+   "fieldtype": "Select",
+   "label": "Payment status",
+   "options": "Pending\nPaid\nCancelled"
+  },
+  {
+   "fieldname": "unique_id",
+   "fieldtype": "Data",
+   "label": "Unique ID"
+  },
+  {
+   "fieldname": "pay_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "\nNEFT\nRTGS\nUPI\nIMP"
+  },
+  {
+   "fieldname": "bnk_acc",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "acc_phone",
+   "fieldtype": "Phone",
+   "label": "Account Phone"
+  },
+  {
+   "fieldname": "otp_status",
+   "fieldtype": "Data",
+   "label": "OTP Status"
+  },
+  {
+   "fieldname": "reciever_acc",
+   "fieldtype": "Link",
+   "label": "Reciever Account",
+   "options": "Bank Account"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-13 18:02:05.811298",
+ "modified_by": "Administrator",
+ "module": "Erpnext App",
+ "name": "Payment Transaction",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

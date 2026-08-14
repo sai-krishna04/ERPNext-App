@@ -20,7 +20,21 @@ app_license = "mit"
 # 		"has_permission": "erpnext_app.api.permission.has_app_permission"
 # 	}
 # ]
-
+doc_events = {
+    "Payment Entry": {
+        "on_submit": "erpnext_app.api.add_payment_to_invoice"
+    }
+}
+# doc_events = {
+#     "Customer Details": {
+#         "after_insert": "erpnext_app.api.send_customer_to_other_site"
+#     }
+# }
+# doc_events = {
+#     "Customer Details": {
+#         "before_insert": "erpnext_app.api.validate_customer_otp"
+#     }
+# }
 # Includes in <head>
 # ------------------
 
