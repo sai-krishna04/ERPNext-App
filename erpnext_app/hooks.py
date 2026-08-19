@@ -20,9 +20,11 @@ app_license = "mit"
 # 		"has_permission": "erpnext_app.api.permission.has_app_permission"
 # 	}
 # ]
-doc_events = {
-    "Payment Entry": {
-        "on_submit": "erpnext_app.api.add_payment_to_invoice"
+scheduler_events = {
+    "cron": {
+        "*/1 * * * *": [
+            "erpnext_app.api.check_pending_payments"
+        ]
     }
 }
 # doc_events = {
