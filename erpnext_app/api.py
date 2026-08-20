@@ -14,7 +14,6 @@ def verify_payment_otp(
     payment_type=None,
     unique_id=None
 ):
-
     url = (
         "http://integ.local:8000/"
         "api/method/integ_app.api.validate_otp"
@@ -39,7 +38,7 @@ def verify_payment_otp(
                 "payment_type": payment_type,
                 "unique_id": unique_id
             },
-            timeout=30
+            timeout=120
         )
 
     except requests.RequestException as e:
@@ -60,7 +59,7 @@ def verify_payment_otp(
 
     return result.get("message", result)
 @frappe.whitelist()
-def generate_payment_otp(phone):
+def generate_payment_otp(phone,unique):
 
     url = (
         "http://integ.local:8000/"
@@ -75,7 +74,8 @@ def generate_payment_otp(phone):
         url,
         headers=headers,
         data={
-            "phone": phone
+            "phone": phone,
+            "unique_id":unique
         },
         timeout=10
     )
@@ -113,6 +113,11 @@ def check_pending_payments():
 
             if not transaction.unique_id:
                 continue
+            phone = frappe.db.get_value(
+                "Bank Account",
+                transaction.custom_bank_sender,
+                "custom_account_phone"
+            )
 
             try:
 
@@ -125,13 +130,13 @@ def check_pending_payments():
                     "Authorization":
                     "token cbdf2692bd670b0:3752219d3d08b14"
                 }
-
+                
                 response = requests.post(
                     url,
                     headers=headers,
                     data={
-                        "unique_id":
-                        transaction.unique_id
+                        "phone":phone,
+                        "unique_id":transaction.unique_id
                     },
                     timeout=10
                 )
@@ -199,9 +204,12 @@ def check_pending_payments():
                             frappe.get_traceback(),
                             "Payment Entry Creation Error"
                         )
-                elif payment_status == "FAILED":
+                else:
 
-                    transaction.custom_payment_status = "Failed"
+                    invoice_doc.custom_payment_trans = [
+                        row for row in invoice_doc.custom_payment_trans
+                        if row.name != transaction.name
+                    ]
 
                     changed = True
 
